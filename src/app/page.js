@@ -190,7 +190,7 @@ function Home() {
       >
         Agregar nuevo producto
       </Button>
-      <section className="pt-10 min-h-[100dvh] px-10 max-w-[1000px] m-auto bg-white">
+      <section className="pt-5 min-h-[100dvh] px-5 max-w-[1000px] m-auto bg-white">
         <SearchBar data={products} />
 
         <section>
