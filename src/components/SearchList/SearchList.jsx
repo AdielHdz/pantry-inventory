@@ -16,12 +16,12 @@ function SearchList({ list }) {
             <SearchLi
               key={product.id}
               id={product.id}
-              product={product.product}
+              title={product.title}
               brand={product.brand}
               life={product.life}
-              typeWeight={product.typeWeight}
-              weight={product.weight}
-              amount={product.amount}
+              quantity_type={product.quantity_type}
+              quantity={product.quantity}
+              units={product.units}
             />
           ))}
         </ul>

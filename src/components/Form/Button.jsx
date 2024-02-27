@@ -13,7 +13,7 @@ function Button({
       onClick={handler}
       type={type}
       className={`
-    text-white 
+    
     py-1 
     rounded
     w-full
