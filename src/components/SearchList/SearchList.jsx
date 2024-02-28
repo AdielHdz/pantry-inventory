@@ -16,7 +16,7 @@ function SearchList({ list }) {
             <SearchLi
               key={product.id}
               id={product.id}
-              title={product.title}
+              name={product.name}
               brand={product.brand}
               life={product.life}
               quantity_type={product.quantity_type}

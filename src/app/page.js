@@ -53,7 +53,7 @@ function Home() {
   }, []);
 
   const [newProduct, setNewProduct] = useState({
-    title: "",
+    name: "",
     brand: "",
     life: "",
     quantity: "",
@@ -97,7 +97,7 @@ function Home() {
               type="text"
               height="h-[40px]"
               handler={handlerInput}
-              name="title"
+              name="name"
               value={newProduct.product}
             />
           </Label>
@@ -200,7 +200,7 @@ function Home() {
                   key={product.id}
                   onClick={async () => {
                     const productDeleted = await deleteProduct(product.id);
-                    if (productDeleted.title) {
+                    if (productDeleted.name) {
                       const productsUpdated = await getProducts();
                       setProducts(productsUpdated);
                     }
@@ -208,7 +208,7 @@ function Home() {
                   className="shadow-[2px_2px_10px_0_rgba(0,0,0,0.1)]  rounded p-3 min-w-[150px] grid grid-rows-3 place-items-center "
                 >
                   <h3 className="text-center">
-                    {`${product.title} ${product.brand}
+                    {`${product.name} ${product.brand}
                     ${product.quantity + product.quantity_type}`}
                   </h3>
                   <h3 className="w-max">Cantidad: {product.units}</h3>
