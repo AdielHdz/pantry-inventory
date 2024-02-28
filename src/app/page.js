@@ -11,7 +11,11 @@ import SearchBar from "../components/SearchBar/SearchBar";
 async function getProducts() {
   return await axios
     .get("/api/products")
-    .then((response) => response.data)
+    .then((response) => {
+      console.log(response);
+      return response.data;
+    })
+
     .catch((error) => console.log(error));
 }
 
@@ -58,13 +62,19 @@ function Home() {
   });
 
   function handlerInput(e) {
-    const targetName = e.target.name;
-    const targetValue = e.target.value;
+    let targetName = e.target.name;
+    let targetValue = e.target.value;
+
+    if (targetName === "life") {
+      targetValue = targetValue.split("-").reverse().join().replace(/,/gi, "/");
+    }
 
     setNewProduct({
       ...newProduct,
       [targetName]: targetValue,
     });
+
+    console.log(newProduct);
   }
   return (
     <main className="bg-rose-50  min-h-[100dvh]">
@@ -108,7 +118,6 @@ function Home() {
               height="h-[40px]"
               handler={handlerInput}
               name="life"
-              value={newProduct.life}
             />
           </Label>
 
@@ -131,7 +140,7 @@ function Home() {
                     quantity_type: e.target.value,
                   })
                 }
-                className=" text-sm border-2 border-blue-50 focus:border-blue-400 h-9 rounded"
+                className=" text-sm border-2 h-[40px] border-blue-50 focus:border-blue-400 rounded"
               >
                 <option value="ml">ml</option>
                 <option value="lt">lt</option>
