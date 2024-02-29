@@ -7,7 +7,11 @@ import Button from "../components/Form/Button";
 import { IoCloseOutline } from "react-icons/io5";
 import axios from "axios";
 import SearchBar from "../components/SearchBar/SearchBar";
+import Panel from "@/layouts/Panel/Panel";
+import ProductCard from "@/components/Cards/ProductCard";
+import Table from "@/components/Table/Table";
 
+import useWindowSize from "@/hooks/useWindowSize";
 async function getProducts() {
   return await axios
     .get("/api/products")
@@ -43,6 +47,8 @@ function Home() {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const [products, setProducts] = useState([]);
+  const [distributionTable, setDistributionTable] = useState();
+  const windowSize = useWindowSize();
   useEffect(() => {
     async function fetchProducts() {
       const apiProducts = await getProducts();
@@ -50,7 +56,15 @@ function Home() {
     }
     fetchProducts();
     console.log(products);
+    console.log(windowSize);
   }, []);
+
+  useEffect(() => {
+    console.log(windowSize.width);
+    if (windowSize.width < 550) setDistributionTable("column");
+
+    if (windowSize.width >= 550) setDistributionTable("row");
+  }, [windowSize.width]);
 
   const [newProduct, setNewProduct] = useState({
     name: "",
@@ -189,37 +203,22 @@ function Home() {
       <section className="pt-5 min-h-[100dvh] px-5 max-w-[1000px] m-auto bg-white">
         <SearchBar data={[]} />
 
-        <section>
-          <h3 className="text-lg font-semibold border-b border-teal-500 py-2">
-            Todos los productos
-          </h3>
-          <section className="grid  md:grid-cols-3 gap-5 mt-4">
-            {products.map((product) => {
-              return (
-                <div
-                  key={product.id}
-                  onClick={async () => {
-                    const productDeleted = await deleteProduct(product.id);
-                    if (productDeleted.name) {
-                      const productsUpdated = await getProducts();
-                      setProducts(productsUpdated);
-                    }
-                  }}
-                  className="shadow-[2px_2px_10px_0_rgba(0,0,0,0.1)]  rounded p-3 min-w-[150px] grid grid-rows-3 place-items-center "
-                >
-                  <h3 className="text-center">
-                    {`${product.name} ${product.brand}
-                    ${product.quantity + product.quantity_type}`}
-                  </h3>
-                  <h3 className="w-max">Cantidad: {product.units}</h3>
-                  <h3 className="  text-rose-600 font-semibold">
-                    {product.life}
-                  </h3>
-                </div>
-              );
-            })}
-          </section>
-        </section>
+        <Panel titlePanel="Todos los productos">
+          <Table
+            columns="5"
+            arrTh={[
+              "Nombre",
+              "Marca",
+              "Peso o Volumen",
+              "Medida",
+              "En existencia",
+              "Fecha de vencimiento",
+            ]}
+            arrData={products}
+            distribution={distributionTable}
+            borderColor="border-gray-700"
+          />
+        </Panel>
       </section>
     </main>
   );
