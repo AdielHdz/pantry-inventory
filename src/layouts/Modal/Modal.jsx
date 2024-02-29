@@ -1,13 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Modal({ children, transitionTime, isOpenModal }) {
   const [isOpen, setIsOpen] = useState(false);
   const [translate, setTranslate] = useState("scale(95%)");
   const [opacity, setOpacity] = useState(0);
-  const [transition, setTransition] = useState(".5s");
+  const [transition, setTransition] = useState("");
 
+  console.log(transition);
   useEffect(() => {
     if (isOpenModal) {
+      setTransition(transitionTime ? transitionTime : ".2s");
       setIsOpen(true);
       setTimeout(() => {
         setTranslate("scale(100%)");

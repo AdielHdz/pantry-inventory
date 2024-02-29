@@ -46,22 +46,20 @@ async function deleteProduct(id) {
 
 function Home() {
   const [isOpenModal, setIsOpenModal] = useState(false);
-
   const [products, setProducts] = useState([]);
   const [distributionTable, setDistributionTable] = useState();
+
   const windowSize = useWindowSize();
+
   useEffect(() => {
     async function fetchProducts() {
       const apiProducts = await getProducts();
       setProducts(apiProducts);
     }
     fetchProducts();
-    console.log(products);
-    console.log(windowSize);
   }, []);
 
   useEffect(() => {
-    console.log(windowSize.width);
     if (windowSize.width < 550) setDistributionTable("column");
 
     if (windowSize.width >= 550) setDistributionTable("row");
@@ -94,7 +92,7 @@ function Home() {
 
   return (
     <main className="bg-rose-50  min-h-[100dvh]">
-      <Modal isOpenModal={isOpenModal}>
+      <Modal isOpenModal={isOpenModal} transitionTime=".1s">
         <form className="grid gap-2 text-sm md:text-base relative bg-white rounded-sm p-5 max-w-[600px]">
           <h2 className=" font-semibold text-lg text-center mb-3">
             Nuevo producto
