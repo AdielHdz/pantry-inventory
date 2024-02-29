@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Input from "../components/Form/Input";
 import Modal from "../layouts/Modal/Modal";
 import Label from "../layouts/Form/Label";
@@ -12,6 +12,7 @@ import ProductCard from "@/components/Cards/ProductCard";
 import Table from "@/components/Table/Table";
 
 import useWindowSize from "@/hooks/useWindowSize";
+
 async function getProducts() {
   return await axios
     .get("/api/products")
@@ -90,15 +91,18 @@ function Home() {
 
     console.log(newProduct);
   }
+
   return (
     <main className="bg-rose-50  min-h-[100dvh]">
       <Modal isOpenModal={isOpenModal}>
-        <form className="grid gap-2 text-sm md:text-base  relative bg-white rounded-md p-5 max-w-[500px]">
+        <form className="grid gap-2 text-sm md:text-base relative bg-white rounded-sm p-5 max-w-[600px]">
           <h2 className=" font-semibold text-lg text-center mb-3">
             Nuevo producto
           </h2>
           <IoCloseOutline
-            onClick={() => setIsOpenModal(false)}
+            onClick={() => {
+              setIsOpenModal(false);
+            }}
             className="absolute bg-pink-100 rounded cursor-pointer top-3 right-3"
             style={{
               width: "20px",
@@ -191,6 +195,7 @@ function Home() {
           </div>
         </form>
       </Modal>
+
       <Button
         handler={() => setIsOpenModal(true)}
         color="bg-teal-500"
