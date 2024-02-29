@@ -93,7 +93,7 @@ function Home() {
   return (
     <main className="bg-rose-50  min-h-[100dvh]">
       <Modal isOpenModal={isOpenModal}>
-        <form className="grid gap-2 relative bg-white rounded-md p-5 max-w-[500px]">
+        <form className="grid gap-2 text-sm md:text-base  relative bg-white rounded-md p-5 max-w-[500px]">
           <h2 className=" font-semibold text-lg text-center mb-3">
             Nuevo producto
           </h2>

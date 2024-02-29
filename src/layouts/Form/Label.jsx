@@ -6,7 +6,11 @@ function Label({ children, column }) {
         gap-2
         grid
         w-full
-        ${column ? "grid-cols-none" : "grid-cols-[150px_1fr]"} 
+        ${
+          column
+            ? "grid-cols-none"
+            : "grid-cols-[100px_1fr] md:grid-cols-[120px_1fr]"
+        } 
         `}
     >
       {children}
