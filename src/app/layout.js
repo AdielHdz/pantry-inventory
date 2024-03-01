@@ -1,7 +1,9 @@
 import { Inter, Libre_Franklin, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+});
 
 const franklin = Noto_Sans({
   subsets: ["latin"],
@@ -16,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`{${franklin.className} text-gray-600`}>{children}</body>
+      <body className={`{${inter.className} text-gray-600`}>{children}</body>
     </html>
   );
 }

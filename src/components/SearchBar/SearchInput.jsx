@@ -4,13 +4,13 @@ function SearchInput({ type, placeholder, height, width, radius, textColor }) {
       type={type}
       className={`
         px-2 
-        border-rose-300 
+        border-gray-400 
         focus:border-rose-600 
-        bg-gray-50
+        shadow-[inset_0_0_10px_0_rgba(0,0,0,0.3)]
         focus:bg-white
         w-full 
         h-9 
-        border-2 
+        border-2
         outline-none 
         rounded
         text-sm

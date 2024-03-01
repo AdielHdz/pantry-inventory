@@ -10,6 +10,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import Panel from "@/layouts/Panel/Panel";
 import ProductCard from "@/components/Cards/ProductCard";
 import Table from "@/components/Table/Table";
+import { GoPackageDependencies } from "react-icons/go";
 
 import useWindowSize from "@/hooks/useWindowSize";
 
@@ -91,7 +92,7 @@ function Home() {
   }
 
   return (
-    <main className="bg-rose-50  min-h-[100dvh]">
+    <main className="min-h-[100dvh] bg-[#FFFFFA]">
       <Modal isOpenModal={isOpenModal} transitionTime=".1s">
         <form className="grid gap-2 text-sm md:text-base relative bg-white rounded-sm p-5 max-w-[600px]">
           <h2 className=" font-semibold text-lg text-center mb-3">
@@ -194,20 +195,32 @@ function Home() {
         </form>
       </Modal>
 
-      <Button
-        handler={() => setIsOpenModal(true)}
-        color="bg-teal-500"
-        textColor="text-white"
-        radius=" rounded-none"
-        paddingBlock="py-5"
+      <div
+        onClick={() => setIsOpenModal(true)}
+        className="fixed bottom-3 right-3 w-16 h-16 cursor-pointer bg-rose-600 shadow-[0_0_5px_0_rgba(0,0,0,0.2)] flex items-center justify-center rounded-full"
       >
-        Agregar nuevo producto
-      </Button>
-      <section className="pt-5 min-h-[100dvh] px-5 max-w-[1000px] m-auto bg-white">
+        <GoPackageDependencies className="w-10 h-10 text-white" />
+      </div>
+
+      <section className="pt-5 min-h-[100dvh] px-5 max-w-[1000px] m-auto ">
         <SearchBar data={[]} />
 
         <Panel titlePanel="Todos los productos">
-          <Table
+          <section className="grid grid-cols-3 place-items-center gap-3 ">
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                name={product.name}
+                brand={product.brand}
+                quantity={product.quantity}
+                quantity_type={product.quantity_type}
+                units={product.units}
+                life={product.life}
+              />
+            ))}
+          </section>
+
+          {/*    <Table
             columns="5"
             arrTh={[
               "Nombre",
@@ -220,7 +233,7 @@ function Home() {
             arrData={products}
             distribution={distributionTable}
             borderColor="border-gray-700"
-          />
+          /> */}
         </Panel>
       </section>
     </main>
