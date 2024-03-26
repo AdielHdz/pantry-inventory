@@ -1,5 +1,6 @@
 import { Inter, Libre_Franklin, Noto_Sans } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
