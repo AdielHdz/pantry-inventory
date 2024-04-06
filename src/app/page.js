@@ -115,7 +115,7 @@ function Home() {
             <input
               placeholder="Leche Alpura, Frijoles La sierra..."
               type="text"
-              className=" h-[45px] border border-grayPurple w-full text-xs rounded-5 outline-none shadow-[inset_0_0_10px_0_rgba(0,0,0,0.3)] px-2"
+              className=" h-[45px] border border-grayPurple w-full text-xs0 rounded-5 outline-none shadow-[inset_0_0_10px_0_rgba(0,0,0,0.3)] px-2"
             />
           </form>
         </section>
