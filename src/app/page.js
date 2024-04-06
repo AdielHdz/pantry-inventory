@@ -97,11 +97,11 @@ function Home() {
               <h2 className=" text-sm font-semibold ">Agregar existente</h2>
               <p className="text-xs">
                 Busca el producto que deseas agregar, si no lo encuentras puedes
-                cambiar al formulario "
-                <span className="text-primary underline">Agregar nuevo</span>”
-                para guardarlo. Despues de guardarlo una vez ya no necesitaras
-                agregarlo nuevamente en el futuro lo podras encontrar en esta
-                misma sección.
+                cambiar al formulario &quot;
+                <span className="text-primary underline">Agregar nuevo</span>
+                &quot; para guardarlo. Despues de guardarlo una vez ya no
+                necesitaras agregarlo nuevamente en el futuro lo podras
+                encontrar en esta misma sección.
               </p>
             </div>
             <button
