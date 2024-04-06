@@ -1,11 +1,20 @@
-function SearchInput({ type, placeholder, height, width, radius, textColor }) {
+function SearchInput({
+  type,
+  placeholder,
+  height,
+  width,
+  radius,
+  textColor,
+  handlerChange,
+  value,
+}) {
   return (
     <input
       type={type}
       className={`
         px-2 
-        border-gray-400 
-        focus:border-rose-600 
+        border-grayPurple 
+        focus:border-secondary 
         shadow-[inset_0_0_10px_0_rgba(0,0,0,0.3)]
         focus:bg-white
         w-full 
@@ -20,6 +29,8 @@ function SearchInput({ type, placeholder, height, width, radius, textColor }) {
         ${height ? height : "h-full"} 
         `}
       placeholder={placeholder ? placeholder : ""}
+      onChange={handlerChange}
+      value={value}
     />
   );
 }

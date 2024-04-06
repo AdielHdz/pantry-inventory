@@ -8,6 +8,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#E11D48",
+        secondary: "#0036C1",
+        tertiary: "#136331",
+        grayPurple: "#A3A6CC",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -15,6 +21,9 @@ module.exports = {
       },
       boxShadow: {
         "00100black": "",
+      },
+      borderRadius: {
+        5: "5px",
       },
     },
   },
